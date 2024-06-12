@@ -61,7 +61,6 @@ function Order() {
 
   return (
     <div>
-      <Search />
       <div>
         <h2>Status</h2>
 
