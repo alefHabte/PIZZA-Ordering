@@ -48,32 +48,41 @@ function CreateOrder() {
   const formErrors = useActionData();
 
   return (
-    <div>
-      <h2>Ready to order? Lets go!</h2>
+    <div className="px-4 py-3">
+      <h2 className="mb-10 text-xl font-semibold">Ready to order? Lets go!</h2>
 
       {/* <Form method="post" action="/order/new"> */}
       <Form method="post">
-        <div>
-          <label>First Name</label>
-          <input type="text" name="customer" required className="input" />
+        <div className="mb-3 flex flex-col gap-3 sm:flex sm:flex-row sm:items-center">
+          <label className="sm:basis-40">First Name</label>
+          <input type="text" name="customer" required className="input grow" />
         </div>
 
-        <div>
-          <label>Phone number</label>
-          <div>
-            <input type="tel" name="phone" required className="input" />
-          </div>
-          {formErrors?.phone && <p>{formErrors.phone}</p>}
-        </div>
-
-        <div>
-          <label>Address</label>
-          <div>
-            <input type="text" name="address" required className="input" />
+        <div className="mb-3 flex flex-col gap-3 sm:flex sm:flex-row sm:items-center">
+          <label className="sm:basis-52">Phone number</label>
+          <div className="w-full">
+            <input type="tel" name="phone" required className="input w-full" />
           </div>
         </div>
+        {formErrors?.phone && (
+          <p className="mb-3 rounded-md bg-red-100 px-2 py-1 text-red-500">
+            {formErrors.phone}
+          </p>
+        )}
 
-        <div>
+        <div className="mb-3 flex flex-col gap-3 sm:flex sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Address</label>
+          <div className="sm:grow">
+            <input
+              type="text"
+              name="address"
+              required
+              className="input w-full"
+            />
+          </div>
+        </div>
+
+        <div className="mb-5 mt-10 flex items-center gap-5">
           <input
             type="checkbox"
             name="priority"
@@ -82,7 +91,9 @@ function CreateOrder() {
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority">Want to yo give your order priority?</label>
+          <label htmlFor="priority" className="font-medium">
+            Want to yo give your order priority?
+          </label>
         </div>
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
